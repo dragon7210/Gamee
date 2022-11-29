@@ -1,5 +1,5 @@
 import View from "components/claim";
-import Liquidity from "components/liquidity";
+import Approve from "components/approve";
 import Switch from "components/switch";
 import { claim } from "constant";
 import Question from "assets/img/question.png";
@@ -45,7 +45,7 @@ const Main = () => {
           reward={claim.reward}
           earned={claim.earned}
         />
-        <Liquidity
+        <Approve
           name1={claim.name1}
           name2={claim.name2}
           liqudity={claim.liquidity}

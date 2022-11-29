@@ -6,12 +6,23 @@ import GMEE from "assets/img/gmee.png";
 import Download from "assets/img/download.png";
 import Show from "assets/img/show.png";
 import Transaction from "assets/img/transaction.png";
+import Bottom from "assets/img/bottom.png";
+import Top from "assets/img/top.png";
 
 const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
+  const [active, setActive] = useState(false);
   return (
-    <div className="bg-[#105657] rounded-[20px] px-[50px] py-[30px] mt-[20px]">
-      <div className="lg:flex border-b-2 border-[rgb(34,102,136)] pb-[20px]">
+    <div
+      className={`${
+        active ? "bg-[#105657]" : "bg-[#232526]"
+      } rounded-[20px] px-[50px] py-[30px] mt-[20px] `}
+    >
+      <div
+        className={`lg:flex  ${
+          active && "border-b-2 border-[rgb(34,102,136)] pb-[20px]"
+        } relative`}
+      >
         <div className="flex w-[250px]">
           <div className="relative flex">
             {name1 === "ETH" && (
@@ -70,80 +81,100 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
             {earned}
           </p>
         </div>
-        <button className="px-[20px] py-[15px] bg-gradient-to-r from-[#45e59d] to-[#b8ed35] rounded-[15px] flex justify-center ml-[50px] max-lg:w-[100%] max-lg:ml-[0px]">
-          <img className="w-[25px] h-[25px]" src={Download} alt="download" />
-          Claim
-        </button>
-      </div>
-      <div className="flex justify-between mt-[50px]">
-        <div>
-          <p className="text-[white]">Your deposit</p>
-          <div className="flex">
-            <p className="text-[white] text-[40px] mr-[20px] font-[700]">
-              24,567.7
-            </p>
-            <p className="text-[white] right-[-80px] bottom-2 mt-[28px]">
-              $204.67
-            </p>
-          </div>
-        </div>
-        <div>
-          <p className="text-[white]">Share</p>
-          <div className="flex">
-            <p className="text-[white] text-[40px] mr-[20px] font-[700]">
-              0.0007
-            </p>
-            <p className="text-[white] right-[-80px] bottom-2 mt-[28px]">%</p>
-          </div>
-        </div>
-        <div>
-          <p className="text-[white]">Earnings</p>
-          <div className="flex">
-            <p className="text-[white] text-[40px] mr-[20px] font-[700] text-transparent text-1xl bg-clip-text bg-gradient-to-r from-[#45e59d] to-[#b8ed35]">
-              2.6789
-            </p>
-            <p className="text-[white] right-[-80px] bottom-2 mt-[28px]">
-              $20.56
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="flex mt-[50px] justify-between">
-        <div className="flex">
-          <button className="px-[40px] py-[15px] bg-[#32706f] rounded-[15px]">
-            <p className="text-[white]">+ Add liquidity</p>
+        <div className="lg:absolute lg:right-[0px] flex">
+          <button className="px-[20px] py-[15px] bg-gradient-to-r from-[#45e59d] to-[#b8ed35] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]">
+            <img className="w-[25px] h-[25px]" src={Download} alt="download" />
+            <p className="font-[600]">Claim</p>
           </button>
-          <button className="px-[20px] py-[15px] bg-[#32706f] ml-[20px] rounded-[15px]">
-            <p className="text-[white]">-</p>
-          </button>
-        </div>
-        <div className="relative">
-          {show && (
-            <div className="bg-[#232526] p-[8px] rounded-[8px] absolute right-[100px] w-[170px] bottom-0">
-              <button className="p-[5px] hover:bg-[#333536] flex rounded-[7px] w-[154px]">
-                <img className="mt-[5px] mr-[10px]" alt="show" src={Show} />
-                <p className="text-[white]">Show contract</p>
-              </button>
-              <button className="p-[5px] hover:bg-[#333536] flex rounded-[7px] w-[154px]">
-                <img
-                  className="mt-[2px] mr-[10px]"
-                  alt="transaction"
-                  src={Transaction}
-                />
-                <p className="text-[white]">Transactions</p>
-              </button>
-            </div>
-          )}
           <button
-            className="px-[20px] py-[15px] bg-[#32706f] ml-[20px] rounded-[15px]"
             onClick={() => {
-              show ? setShow(false) : setShow(true);
+              active ? setActive(false) : setActive(true);
             }}
           >
-            <p className="text-[white] ">More</p>
+            <img
+              className="w-[20px] ml-[15px]"
+              alt="bottom"
+              src={active ? Top : Bottom}
+            />
           </button>
         </div>
       </div>
+
+      {active && (
+        <div className="mt-[50px]">
+          <div className="flex justify-between">
+            <div>
+              <p className="text-[white]">Your deposit</p>
+              <div className="flex">
+                <p className="text-[white] text-[40px] mr-[20px] font-[700]">
+                  24,567.7
+                </p>
+                <p className="text-[white] right-[-80px] bottom-2 mt-[28px]">
+                  $204.67
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="text-[white]">Share</p>
+              <div className="flex">
+                <p className="text-[white] text-[40px] mr-[20px] font-[700]">
+                  0.0007
+                </p>
+                <p className="text-[white] right-[-80px] bottom-2 mt-[28px]">
+                  %
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="text-[white]">Earnings</p>
+              <div className="flex">
+                <p className="text-[white] text-[40px] mr-[20px] font-[700] text-transparent text-1xl bg-clip-text bg-gradient-to-r from-[#45e59d] to-[#b8ed35]">
+                  2.6789
+                </p>
+                <p className="text-[white] right-[-80px] bottom-2 mt-[28px]">
+                  $20.56
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex mt-[50px] justify-between">
+            <div className="flex">
+              <button className="px-[40px] py-[15px] bg-[#32706f] rounded-[15px]">
+                <p className="text-[white]">+ Add liquidity</p>
+              </button>
+              <button className="px-[20px] py-[15px] bg-[#32706f] ml-[20px] rounded-[15px]">
+                <p className="text-[white]">-</p>
+              </button>
+            </div>
+            <div className="relative">
+              {show && (
+                <div className="bg-[#232526] p-[8px] rounded-[8px] absolute right-[100px] w-[170px] bottom-0">
+                  <button className="p-[5px] hover:bg-[#333536] flex rounded-[7px] w-[154px]">
+                    <img className="mt-[5px] mr-[10px]" alt="show" src={Show} />
+                    <p className="text-[white]">Show contract</p>
+                  </button>
+                  <button className="p-[5px] hover:bg-[#333536] flex rounded-[7px] w-[154px]">
+                    <img
+                      className="mt-[2px] mr-[10px]"
+                      alt="transaction"
+                      src={Transaction}
+                    />
+                    <p className="text-[white]">Transactions</p>
+                  </button>
+                </div>
+              )}
+              <button
+                className="px-[20px] py-[15px] bg-[#32706f] ml-[20px] rounded-[15px]"
+                onClick={() => {
+                  show ? setShow(false) : setShow(true);
+                }}
+              >
+                <p className="text-[white] ">More</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
