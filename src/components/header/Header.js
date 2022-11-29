@@ -18,7 +18,7 @@ const Header = () => {
       <div className="my-auto ">
         <img className="h-[24px]" src={Logo} alt="logo" />
       </div>
-      <div className="my-auto">
+      <div className="my-auto max-lg:hidden ">
         <Tab />
       </div>
       <div className="my-auto flex">

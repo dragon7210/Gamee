@@ -10,62 +10,67 @@ import Change from "assets/img/switch.png";
 const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
   return (
-    <div className="bg-[#232526] rounded-[20px] px-[50px] py-[30px] mt-[40px] flex">
-      <div className="relative flex w-[10%]">
-        {name1 === "ETH" && (
-          <img
-            className="w-[50px] h-[50px] bg-[#34424b] p-[10px] rounded-[99px]"
-            src={ETH}
-            alt={name1}
-          />
-        )}
-        {name1 === "MATIC" && (
-          <img
-            className="w-[50px] h-[50px] bg-[#6300FF] p-[10px] rounded-[99px]"
-            src={MATIC}
-            alt={name1}
-          />
-        )}
-        {name1 === "GMEE" && (
-          <img
-            className="w-[50px] h-[50px] bg-[#29E7E8] p-[10px] rounded-[99px]"
-            src={GMEE}
-            alt={name1}
-          />
-        )}
+    <div className="bg-[#232526] rounded-[20px] px-[50px] py-[30px] mt-[40px] lg:flex">
+      <div className="flex w-[250px]">
+        <div className="flex relative">
+          {name1 === "ETH" && (
+            <img
+              className="w-[50px] h-[50px] bg-[#34424b] p-[10px] rounded-[99px]"
+              src={ETH}
+              alt={name1}
+            />
+          )}
+          {name1 === "MATIC" && (
+            <img
+              className="w-[50px] h-[50px] bg-[#6300FF] p-[10px] rounded-[99px]"
+              src={MATIC}
+              alt={name1}
+            />
+          )}
+          {name1 === "GMEE" && (
+            <img
+              className="w-[50px] h-[50px] bg-[#29E7E8] p-[10px] rounded-[99px]"
+              src={GMEE}
+              alt={name1}
+            />
+          )}
 
-        {name2 === "ETH" && (
-          <img
-            className="absolute left-[40px] w-[50px] h-[50px] bg-[#34424b] p-[10px] rounded-[99px]"
-            src={ETH}
-            alt={name2}
-          />
-        )}
-        {name2 === "MATIC" && (
-          <img
-            className="absolute left-[40px] w-[50px] h-[50px] bg-[#6300FF] p-[10px] rounded-[99px]"
-            src={MATIC}
-            alt={name2}
-          />
-        )}
-        {name2 === "GMEE" && (
-          <img
-            className="absolute left-[40px] w-[50px] h-[50px] bg-[#29E7E8] p-[10px] rounded-[99px]"
-            src={GMEE}
-            alt={name2}
-          />
-        )}
+          {name2 === "ETH" && (
+            <img
+              className="absolute left-[40px] w-[50px] h-[50px] bg-[#34424b] p-[10px] rounded-[99px]"
+              src={ETH}
+              alt={name2}
+            />
+          )}
+          {name2 === "MATIC" && (
+            <img
+              className="absolute left-[40px] w-[50px] h-[50px] bg-[#6300FF] p-[10px] rounded-[99px]"
+              src={MATIC}
+              alt={name2}
+            />
+          )}
+          {name2 === "GMEE" && (
+            <img
+              className="absolute left-[40px] w-[50px] h-[50px] bg-[#29E7E8] p-[10px] rounded-[99px]"
+              src={GMEE}
+              alt={name2}
+            />
+          )}
+        </div>
+        <p className="my-auto ml-[50px] text-[white] text-[20px] ">
+          {name1}-{name2}
+        </p>
       </div>
-      <p className="my-auto text-[white] text-[20px] w-[13%]">
-        {name1}-{name2}
-      </p>
-      <p className="my-auto text-[white] w-[13%]">$ {liqudity}M</p>
-      <p className="my-auto text-[white] w-[13%]">{apr} %</p>
-      <p className="my-auto text-[white] w-[13%]">{reward} K</p>
-      <p className="my-auto text-[20px] w-[13%] text-transparent text-1xl bg-clip-text bg-gradient-to-r from-[#45e59d] to-[#b8ed35] ">
-        {earned}
-      </p>
-      <div className="flex w-[25%] justify-end relative">
+      <div className="flex justify-between w-[50%] max-lg:w-[100%] max-lg:py-[20px]">
+        <p className="my-auto text-[white] ">$ {liqudity}M</p>
+        <p className="my-auto text-[white] ">{apr} %</p>
+        <p className="my-auto text-[white] ">{reward} K</p>
+        <p className="my-auto text-[20px]  text-transparent text-1xl bg-clip-text bg-gradient-to-r from-[#45e59d] to-[#b8ed35] ">
+          {earned}
+        </p>
+      </div>
+
+      <div className="flex ml-[40px] justify-end relative">
         <button className="flex px-[20px] py-[15px] bg-[#454545] rounded-[15px]">
           <img alt="switch" src={Change} className="w-[15px] mt-[5px]" />
           <p className="text-[white] ml-[5px]">Switch Network</p>

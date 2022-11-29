@@ -10,7 +10,7 @@ function getLibrary(provider) {
 function App() {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
-      <div className="max-w-[1600px] mx-[auto] bg-[black] px-[10%] pb-[10vh] rounded-[50px]">
+      <div className="max-w-[1600px] mx-[auto] bg-[black] px-[10%] pb-[10vh] rounded-[50px] min-w-[850px]">
         <Header />
         <Main />
       </div>
