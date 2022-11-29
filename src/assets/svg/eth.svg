@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g
+    clip-path="url(#ethereum_svg__clip0_5522_53943)"
+  ><path
+      d="M11.999 0l-.161.547v15.866l.16.16 7.365-4.353L12 0z"
+      fill="#62688F"
+    /><path d="M12 0L4.634 12.22l7.364 4.353V0z" fill="#8A92B2" /><path
+      d="M11.999 17.968l-.09.11v5.652l.09.265 7.369-10.379-7.37 4.352z"
+      fill="#62688F"
+    /><path
+      d="M12 23.995v-6.027l-7.365-4.351 7.364 10.378z"
+      fill="#8A92B2"
+    /><path d="M12 16.573l7.365-4.353L12 8.873v7.7z" fill="#454A75" /><path
+      d="M4.635 12.22l7.364 4.353v-7.7L4.635 12.22z"
+      fill="#62688F"
+    /></g><defs><clipPath id="ethereum_svg__clip0_5522_53943"><path
+        fill="#fff"
+        transform="translate(4.635)"
+        d="M0 0h14.734v24H0z"
+      /></clipPath></defs></svg>
