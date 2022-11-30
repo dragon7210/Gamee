@@ -24,6 +24,7 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
       method: "wallet_switchEthereumChain",
       params: [{ chainId: chainIdHex }],
     });
+    setIsSwitching(false);
   };
 
   return (
