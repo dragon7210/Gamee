@@ -20,13 +20,16 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
     setIsSwitching(true);
     let chainId = chainIds[name];
     const chainIdHex = "0x" + chainId.toString(16);
-    await window?.ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: chainIdHex }],
-    });
+    try {
+      await window?.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: chainIdHex }],
+      });
+    } catch (err) {
+      console.log(err);
+    }
     setIsSwitching(false);
   };
-
   return (
     <div
       className={`${
