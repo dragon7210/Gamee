@@ -102,7 +102,6 @@ const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
             className="px-[20px] py-[15px] bg-gradient-to-r from-[#b8ed35] to-[#5c3dfb] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
             onClick={() => approveToken()}
           >
-            <img className="w-[25px] h-[25px]" src={Right} alt="download" />
             {isApproving ? (
               <DotLoader
                 color="white"
@@ -112,7 +111,10 @@ const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
                 data-testid="loader"
               />
             ) : (
-              <p className="font-[600]">Approve</p>
+              <>
+                <img className="w-[25px] h-[25px]" src={Right} alt="download" />
+                <p className="font-[600]">Approve</p>
+              </>
             )}
           </button>
 

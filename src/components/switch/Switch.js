@@ -104,7 +104,6 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
             className="px-[20px] py-[15px] bg-gradient-to-r from-[#5c3dfb] to-[#37c4ed] rounded-[15px] flex justify-center max-lg:w-[100%]"
             onClick={() => switchNetwork(name2)}
           >
-            <img className="w-[25px] h-[25px]" src={Change} alt="Change" />
             {isSwitching ? (
               <DotLoader
                 color="white"
@@ -114,7 +113,10 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
                 data-testid="loader"
               />
             ) : (
-              <p className="font-[600]">Switch Network</p>
+              <>
+                <img className="w-[25px] h-[25px]" src={Change} alt="Change" />
+                <p className="font-[600]">Switch Network</p>
+              </>
             )}
           </button>
           <button

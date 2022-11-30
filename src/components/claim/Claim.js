@@ -102,7 +102,6 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
             className="px-[20px] py-[15px] bg-gradient-to-r from-[#45e59d] to-[#b8ed35] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
             onClick={() => claimToken()}
           >
-            <img className="w-[25px] h-[25px]" src={Download} alt="download" />
             {isClaiming ? (
               <DotLoader
                 color="white"
@@ -112,7 +111,14 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
                 data-testid="loader"
               />
             ) : (
-              <p className="font-[600]"> Claim</p>
+              <>
+                <img
+                  className="w-[25px] h-[25px]"
+                  src={Download}
+                  alt="download"
+                />
+                <p className="font-[600]">Claim</p>
+              </>
             )}
           </button>
 
