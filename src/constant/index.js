@@ -1,4 +1,4 @@
-export const names = ["Dashboard", "Staking", "Marketplace"];
+export const names = ["Staking"];
 
 export const claim = {
   name1: "GMEE",

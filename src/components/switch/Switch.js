@@ -115,7 +115,7 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
         </div>
         <div className="lg:absolute lg:right-[0px] flex">
           <button
-            className="px-[20px] py-[15px] bg-gradient-to-r from-[#5c3dfb] to-[#37c4ed] rounded-[15px] flex justify-center max-lg:w-[100%]"
+            className="px-[20px] py-[15px] rounded-[15px] flex justify-center max-lg:w-[100%]"
             onClick={() => switchNetwork(name2)}
           >
             {isSwitching ? (
@@ -129,7 +129,7 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
             ) : (
               <>
                 <img className="w-[25px] h-[25px]" src={Change} alt="Change" />
-                <p className="font-[600]">Switch Network</p>
+                <p className="font-[600] text-[white]">Switch Network</p>
               </>
             )}
           </button>

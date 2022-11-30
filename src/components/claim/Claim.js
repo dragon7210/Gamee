@@ -109,7 +109,7 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
         </div>
         <div className="lg:absolute lg:right-[0px] flex">
           <button
-            className="px-[20px] py-[15px] bg-gradient-to-r from-[#45e59d] to-[#b8ed35] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
+            className="px-[20px] py-[15px]  rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
             onClick={() => claimToken()}
           >
             {isClaiming ? (
@@ -127,7 +127,7 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
                   src={Download}
                   alt="download"
                 />
-                <p className="font-[600]">Claim</p>
+                <p className="font-[600] text-[white]">Claim</p>
               </>
             )}
           </button>

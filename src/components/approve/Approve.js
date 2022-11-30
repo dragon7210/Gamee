@@ -110,7 +110,7 @@ const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
         </div>
         <div className="lg:absolute lg:right-[0px] flex">
           <button
-            className="px-[20px] py-[15px] bg-gradient-to-r from-[#b8ed35] to-[#5c3dfb] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
+            className="px-[20px] py-[15px] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
             onClick={() => approveToken()}
           >
             {isApproving ? (
@@ -124,7 +124,7 @@ const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
             ) : (
               <>
                 <img className="w-[25px] h-[25px]" src={Right} alt="download" />
-                <p className="font-[600]">Approve</p>
+                <p className="font-[600] text-[white]">Approve</p>
               </>
             )}
           </button>
