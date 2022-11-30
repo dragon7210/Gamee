@@ -8,10 +8,23 @@ import Transaction from "assets/img/transaction.png";
 import Change from "assets/img/switch.png";
 import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
+import { chainIds } from "constant";
 
 const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
   const [active, setActive] = useState(false);
+  const [isSwitching, setIsSwitching] = useState(false);
+
+  const switchNetwork = async (name) => {
+    setIsSwitching(true);
+    let chainId = chainIds[name];
+    const chainIdHex = "0x" + chainId.toString(16);
+    await window?.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: chainIdHex }],
+    });
+  };
+
   return (
     <div
       className={`${
@@ -82,9 +95,14 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
           </p>
         </div>
         <div className="lg:absolute lg:right-[0px] flex">
-          <button className="px-[20px] py-[15px] bg-gradient-to-r from-[#5c3dfb] to-[#37c4ed] rounded-[15px] flex justify-center max-lg:w-[100%]">
+          <button
+            className="px-[20px] py-[15px] bg-gradient-to-r from-[#5c3dfb] to-[#37c4ed] rounded-[15px] flex justify-center max-lg:w-[100%]"
+            onClick={() => switchNetwork(name2)}
+          >
             <img className="w-[25px] h-[25px]" src={Change} alt="Change" />
-            <p className="font-[600]">Switch Network</p>
+            <p className="font-[600]">
+              {isSwitching ? "Switching Network" : "Switch Network"}
+            </p>
           </button>
           <button
             onClick={() => {

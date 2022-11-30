@@ -8,10 +8,25 @@ import Show from "assets/img/show.png";
 import Transaction from "assets/img/transaction.png";
 import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
+import { claim } from "lib/contract";
+import { useWeb3React } from "@web3-react/core";
 
 const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
   const [active, setActive] = useState(false);
+  const { library } = useWeb3React();
+  const [isClaiming, setClaiming] = useState(false);
+
+  const claimToken = async () => {
+    setClaiming(true);
+    try {
+      await claim(library);
+    } catch (err) {
+      console.log(err);
+    }
+    setClaiming(false);
+  };
+
   return (
     <div
       className={`${
@@ -82,10 +97,14 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
           </p>
         </div>
         <div className="lg:absolute lg:right-[0px] flex">
-          <button className="px-[20px] py-[15px] bg-gradient-to-r from-[#45e59d] to-[#b8ed35] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]">
+          <button
+            className="px-[20px] py-[15px] bg-gradient-to-r from-[#45e59d] to-[#b8ed35] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
+            onClick={() => claimToken()}
+          >
             <img className="w-[25px] h-[25px]" src={Download} alt="download" />
-            <p className="font-[600]">Claim</p>
+            <p className="font-[600]">{isClaiming ? "Claiming" : "Claim"}</p>
           </button>
+
           <button
             onClick={() => {
               active ? setActive(false) : setActive(true);

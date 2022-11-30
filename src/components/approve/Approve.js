@@ -8,10 +8,26 @@ import Transaction from "assets/img/transaction.png";
 import Right from "assets/img/right.png";
 import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
+import { approve } from "lib/contract";
+import { maticStakingContractAddress } from "constant";
+import { useWeb3React } from "@web3-react/core";
 
 const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
   const [active, setActive] = useState(false);
+  const { library } = useWeb3React();
+  const [isApproving, setApproving] = useState(false);
+
+  const approveToken = async () => {
+    setApproving(true);
+    try {
+      await approve(10000, library);
+    } catch (err) {
+      console.log(err);
+    }
+    setApproving(false);
+  };
+
   return (
     <div
       className={`${
@@ -82,10 +98,16 @@ const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
           </p>
         </div>
         <div className="lg:absolute lg:right-[0px] flex">
-          <button className="px-[20px] py-[15px] bg-gradient-to-r from-[#b8ed35] to-[#5c3dfb] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]">
+          <button
+            className="px-[20px] py-[15px] bg-gradient-to-r from-[#b8ed35] to-[#5c3dfb] rounded-[15px] flex justify-center max-lg:w-[100%] max-lg:ml-[0px]"
+            onClick={() => approveToken()}
+          >
             <img className="w-[25px] h-[25px]" src={Right} alt="download" />
-            <p className="font-[600]">Approve</p>
+            <p className="font-[600]">
+              {isApproving ? "Approving" : "Approve"}
+            </p>
           </button>
+
           <button
             onClick={() => {
               active ? setActive(false) : setActive(true);

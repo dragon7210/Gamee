@@ -1,7 +1,7 @@
 import View from "components/claim";
 import Approve from "components/approve";
 import Switch from "components/switch";
-import { claim } from "constant";
+import { approve, claim, networkSwitch } from "constant";
 import Question from "assets/img/question.png";
 
 const Main = () => {
@@ -46,20 +46,20 @@ const Main = () => {
           earned={claim.earned}
         />
         <Approve
-          name1={claim.name1}
-          name2={claim.name2}
-          liqudity={claim.liquidity}
-          apr={claim.apr}
-          reward={claim.reward}
-          earned={claim.earned}
+          name1={approve.name1}
+          name2={approve.name2}
+          liqudity={approve.liquidity}
+          apr={approve.apr}
+          reward={approve.reward}
+          earned={approve.earned}
         />
         <Switch
-          name1={claim.name1}
-          name2={claim.name2}
-          liqudity={claim.liquidity}
-          apr={claim.apr}
-          reward={claim.reward}
-          earned={claim.earned}
+          name1={networkSwitch.name1}
+          name2={networkSwitch.name2}
+          liqudity={networkSwitch.liquidity}
+          apr={networkSwitch.apr}
+          reward={networkSwitch.reward}
+          earned={networkSwitch.earned}
         />
       </div>
     </div>

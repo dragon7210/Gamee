@@ -9,7 +9,7 @@ import { useWeb3React } from "@web3-react/core";
 
 const Header = () => {
   const Injected = new InjectedConnector({
-    supportedChainIds: [1, 3, 4, 5, 42],
+    supportedChainIds: [1, 137],
   });
 
   const { activate, deactivate, account } = useWeb3React();
