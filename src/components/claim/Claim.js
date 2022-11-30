@@ -17,6 +17,7 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [active, setActive] = useState(false);
   const { library } = useWeb3React();
   const [isClaiming, setClaiming] = useState(false);
+  const [adding, setAdding] = useState(false);
 
   const claimToken = async () => {
     setClaiming(true);
@@ -26,6 +27,15 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
       console.log(err);
     }
     setClaiming(false);
+  };
+  const addLiquidity = async () => {
+    setAdding(true);
+    try {
+      await claim(library);
+    } catch (err) {
+      console.log(err);
+    }
+    setAdding(false);
   };
 
   return (
@@ -175,9 +185,25 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
           </div>
           <div className="flex mt-[50px] justify-between">
             <div className="flex">
-              <button className="px-[40px] py-[15px] bg-[#32706f] rounded-[15px]">
-                <p className="text-[white]">+ Add liquidity</p>
+              <button
+                className="px-[40px] py-[15px] bg-[#32706f] rounded-[15px]"
+                onClick={() => {
+                  addLiquidity();
+                }}
+              >
+                {adding ? (
+                  <DotLoader
+                    color="white"
+                    loading={adding}
+                    size={20}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                ) : (
+                  <p className="text-[white]">+ Add liquidity</p>
+                )}
               </button>
+
               <button className="px-[20px] py-[15px] bg-[#32706f] ml-[20px] rounded-[15px]">
                 <p className="text-[white]">-</p>
               </button>

@@ -10,11 +10,15 @@ import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
 import { chainIds } from "constant";
 import DotLoader from "react-spinners/DotLoader";
+import { useWeb3React } from "@web3-react/core";
+import { approve } from "lib/contract";
 
 const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
   const [active, setActive] = useState(false);
   const [isSwitching, setIsSwitching] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const { library } = useWeb3React();
 
   const switchNetwork = async (name) => {
     setIsSwitching(true);
@@ -29,6 +33,16 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
       console.log(err);
     }
     setIsSwitching(false);
+  };
+
+  const addLiquidity = async () => {
+    setAdding(true);
+    try {
+      await approve(library);
+    } catch (err) {
+      console.log(err);
+    }
+    setAdding(false);
   };
   return (
     <div
@@ -171,8 +185,23 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
           </div>
           <div className="flex mt-[50px] justify-between">
             <div className="flex">
-              <button className="px-[40px] py-[15px] bg-[#32706f] rounded-[15px]">
-                <p className="text-[white]">+ Add liquidity</p>
+              <button
+                className="px-[40px] py-[15px] bg-[#32706f] rounded-[15px]"
+                onClick={() => {
+                  addLiquidity();
+                }}
+              >
+                {adding ? (
+                  <DotLoader
+                    color="white"
+                    loading={adding}
+                    size={20}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                  />
+                ) : (
+                  <p className="text-[white]">+ Add liquidity</p>
+                )}
               </button>
               <button className="px-[20px] py-[15px] bg-[#32706f] ml-[20px] rounded-[15px]">
                 <p className="text-[white]">-</p>
