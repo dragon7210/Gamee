@@ -9,6 +9,7 @@ import Change from "assets/img/switch.png";
 import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
 import { chainIds } from "constant";
+import DotLoader from "react-spinners/DotLoader";
 
 const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
@@ -100,9 +101,17 @@ const Switch = ({ name1, name2, liqudity, apr, reward, earned }) => {
             onClick={() => switchNetwork(name2)}
           >
             <img className="w-[25px] h-[25px]" src={Change} alt="Change" />
-            <p className="font-[600]">
-              {isSwitching ? "Switching Network" : "Switch Network"}
-            </p>
+            {isSwitching ? (
+              <DotLoader
+                color="white"
+                loading={isSwitching}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            ) : (
+              <p className="font-[600]">Switch Network</p>
+            )}
           </button>
           <button
             onClick={() => {

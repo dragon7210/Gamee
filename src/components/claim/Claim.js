@@ -10,6 +10,7 @@ import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
 import { claim } from "lib/contract";
 import { useWeb3React } from "@web3-react/core";
+import DotLoader from "react-spinners/DotLoader";
 
 const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
@@ -102,7 +103,17 @@ const View = ({ name1, name2, liqudity, apr, reward, earned }) => {
             onClick={() => claimToken()}
           >
             <img className="w-[25px] h-[25px]" src={Download} alt="download" />
-            <p className="font-[600]">{isClaiming ? "Claiming" : "Claim"}</p>
+            {isClaiming ? (
+              <DotLoader
+                color="white"
+                loading={isClaiming}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            ) : (
+              <p className="font-[600]"> Claim</p>
+            )}
           </button>
 
           <button

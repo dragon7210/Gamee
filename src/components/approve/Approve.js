@@ -9,8 +9,8 @@ import Right from "assets/img/right.png";
 import Bottom from "assets/img/bottom.png";
 import Top from "assets/img/top.png";
 import { approve } from "lib/contract";
-import { maticStakingContractAddress } from "constant";
 import { useWeb3React } from "@web3-react/core";
+import DotLoader from "react-spinners/DotLoader";
 
 const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
   const [show, setShow] = useState(false);
@@ -103,9 +103,17 @@ const Approve = ({ name1, name2, liqudity, apr, reward, earned }) => {
             onClick={() => approveToken()}
           >
             <img className="w-[25px] h-[25px]" src={Right} alt="download" />
-            <p className="font-[600]">
-              {isApproving ? "Approving" : "Approve"}
-            </p>
+            {isApproving ? (
+              <DotLoader
+                color="white"
+                loading={isApproving}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            ) : (
+              <p className="font-[600]">Approve</p>
+            )}
           </button>
 
           <button
